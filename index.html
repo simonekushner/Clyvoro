@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clyvoro — AI Platform for the Future</title>
+  <meta name="description" content="Clyvoro is the leading AI platform transforming how enterprises understand, decide, and act on their data in real time." />
+  <link rel="canonical" href="https://clyvoroai.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://clyvoroai.com/" />
+  <meta property="og:title" content="Clyvoro — AI Platform for the Future" />
+  <meta property="og:description" content="Clyvoro is the leading AI platform transforming how enterprises understand, decide, and act on their data in real time." />
+  <meta property="og:site_name" content="Clyvoro" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@clyvoroai" />
+  <meta name="twitter:title" content="Clyvoro — AI Platform for the Future" />
+  <meta name="twitter:description" content="Clyvoro is the leading AI platform transforming how enterprises understand, decide, and act on their data in real time." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #050c14;
+      --bg-2:        #081221;
+      --bg-card:     #0a1929;
+      --border:      rgba(0, 200, 255, 0.12);
+      --cyan:        #00c8ff;
+      --cyan-dim:    rgba(0, 200, 255, 0.15);
+      --cyan-glow:   rgba(0, 200, 255, 0.35);
+      --blue:        #0066ff;
+      --blue-dim:    rgba(0, 102, 255, 0.15);
+      --text:        #e8f4ff;
+      --text-muted:  #7ea8c4;
+      --text-dim:    #3d6a8a;
+      --white:       #ffffff;
+      --radius:      12px;
+      --radius-lg:   20px;
+      --shadow:      0 4px 24px rgba(0,0,0,0.4);
+      --font-body:   'Inter', sans-serif;
+      --font-display:'Space Grotesk', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ─── NOISE TEXTURE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 72px;
+      background: rgba(5, 12, 20, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+
+    .nav-logo span {
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      background: var(--cyan-dim);
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: var(--white);
+      box-shadow: 0 0 20px var(--cyan-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 32px var(--cyan-glow);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cyan);
+      border: 1px solid var(--cyan);
+    }
+
+    .btn-outline:hover {
+      background: var(--cyan-dim);
+      transform: translateY(-1px);
+    }
+
+    .btn-lg {
+      padding: 0.85rem 2rem;
+      font-size: 1rem;
+      border-radius: 10px;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 5% 80px;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 600px;
+      background: radial-gradient(ellipse at center, rgba(0,200,255,0.12) 0%, rgba(0,102,255,0.08) 40%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      background: var(--cyan-dim);
+      border: 1px solid rgba(0,200,255,0.25);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--cyan);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      max-width: 900px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .gradient-text {
+      background: linear-gradient(135deg, var(--cyan) 0%, #4da6ff 50%, var(--blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 620px;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 4rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-value {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .hero-stat-value span {
+      color: var(--cyan);
+    }
+
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    .hero-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--border);
+    }
+
+    /* ─── SECTION SHARED ─── */
+    section {
+      position: relative;
+      padding: 100px 5%;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin: 0 auto; }
+
+    /* ─── LOGOS STRIP ─── */
+    .logos-section {
+      padding: 50px 5%;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-2);
+    }
+
+    .logos-label {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .logo-item {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .logo-item:hover { color: var(--text-muted); }
+
+    /* ─── FEATURES ─── */
+    .features-section { background: var(--bg); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5px;
+      margin-top: 4rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      padding: 2.5rem;
+      transition: background 0.3s;
+      position: relative;
+    }
+
+    .feature-card:hover { background: rgba(0,200,255,0.04); }
+
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1.5px solid var(--border);
+      pointer-events: none;
+    }
+
+    .feature-icon {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      background: var(--cyan-dim);
+      border: 1px solid rgba(0,200,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    .feature-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .hiw-section { background: var(--bg-2); }
+
+    .hiw-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 5rem;
+    }
+
+    .hiw-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .hiw-step {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .hiw-step-num {
+      flex-shrink: 0;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--bg);
+      box-shadow: 0 0 16px var(--cyan-glow);
+    }
+
+    .hiw-step-body h4 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .hiw-step-body p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .hiw-visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hiw-visual-inner {
+      width: 85%;
+      height: 80%;
+      position: relative;
+    }
+
+    /* Animated dashboard mockup */
+    .dash-bar {
+      position: absolute;
+      bottom: 0;
+      border-radius: 4px 4px 0 0;
+      background: linear-gradient(to top, var(--blue), var(--cyan));
+      opacity: 0.7;
+      animation: grow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes grow {
+      from { transform: scaleY(0.6); }
+      to   { transform: scaleY(1); }
+    }
+
+    .dash-line {
+      position: absolute;
+      height: 2px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+      opacity: 0.5;
+    }
+
+    .dash-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--cyan);
+      opacity: 0.8;
+      animation: float 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-8px); }
+    }
+
+    /* ─── USE CASES ─── */
+    .use-cases-section { background: var(--bg); }
+
+    .use-cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .use-case-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: border-color 0.3s, transform 0.3s;
+      cursor: default;
+    }
+
+    .use-case-card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-4px);
+    }
+
+    .use-case-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      background: var(--cyan-dim);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 1.2rem;
+    }
+
+    .use-case-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .use-case-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-section { background: var(--bg-2); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+    }
+
+    .testimonial-stars {
+      color: var(--cyan);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-quote {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonial-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--bg);
+      flex-shrink: 0;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── PLATFORM ─── */
+    .platform-section { background: var(--bg); }
+
+    .platform-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      margin-top: 5rem;
+    }
+
+    .platform-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .platform-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .check-icon {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--cyan-dim);
+      border: 1px solid rgba(0,200,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      color: var(--cyan);
+    }
+
+    .platform-visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .platform-visual::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0,200,255,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .code-block {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    .code-block .kw  { color: var(--cyan); }
+    .code-block .fn  { color: #7fbaff; }
+    .code-block .str { color: #a8e6cf; }
+    .code-block .cm  { color: var(--text-dim); }
+
+    /* ─── CTA BANNER ─── */
+    .cta-section {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 100px 5%;
+    }
+
+    .cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-glow {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(0,200,255,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .cta-inner p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 60px 5% 40px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      max-width: 280px;
+      line-height: 1.7;
+    }
+
+    .footer-col h4 {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--cyan); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .social-link:hover {
+      background: var(--cyan-dim);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+
+      .hiw-inner,
+      .platform-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+      .footer-top { grid-template-columns: 1fr 1fr; }
+
+      .hero h1 { font-size: 2.5rem; }
+
+      section { padding: 70px 5%; }
+
+      .hero-stats { gap: 1.5rem; }
+
+      .hiw-visual { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .footer-top { grid-template-columns: 1fr; }
+      .hero-divider { display: none; }
+    }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav>
+  <div class="nav-logo">CLY<span>VORO</span></div>
+  <ul class="nav-links">
+    <li><a href="#features">Platform</a></li>
+    <li><a href="#how-it-works">How it works</a></li>
+    <li><a href="#use-cases">Use cases</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="#" class="btn btn-ghost">Log in</a>
+    <a href="#contact" class="btn btn-primary">Get started</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    Now in General Availability
+  </div>
+
+  <h1>
+    The AI Platform That<br/>
+    <span class="gradient-text">Thinks Ahead of You</span>
+  </h1>
+
+  <p class="hero-sub">
+    Clyvoro transforms raw enterprise data into real-time intelligence — helping teams predict, automate, and act faster than ever before.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#contact" class="btn btn-primary btn-lg">Start free trial</a>
+    <a href="#how-it-works" class="btn btn-outline btn-lg">See how it works</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-value">10<span>x</span></div>
+      <div class="hero-stat-label">Faster decisions</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-value">99<span>%</span></div>
+      <div class="hero-stat-label">Model uptime SLA</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-value">500<span>+</span></div>
+      <div class="hero-stat-label">Enterprise customers</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-value">3<span>min</span></div>
+      <div class="hero-stat-label">Avg. time to insight</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LOGOS ─── -->
+<div class="logos-section">
+  <p class="logos-label">Trusted by leading organizations worldwide</p>
+  <div class="logos-row">
+    <div class="logo-item">MERIDIAN</div>
+    <div class="logo-item">ARCLUX</div>
+    <div class="logo-item">VANTEX</div>
+    <div class="logo-item">SOLVEX</div>
+    <div class="logo-item">ORBIS</div>
+    <div class="logo-item">CRESTLINE</div>
+  </div>
+</div>
+
+<!-- ─── FEATURES ─── -->
+<section class="features-section" id="features">
+  <div class="text-center fade-up">
+    <span class="section-label">Platform capabilities</span>
+    <h2 class="section-title">Everything you need to deploy AI at scale</h2>
+    <p class="section-sub">From model training to production monitoring, Clyvoro gives your team a complete intelligence layer — no PhD required.</p>
+  </div>
+
+  <div class="features-grid fade-up">
+    <div class="feature-card">
+      <div class="feature-icon">🧠</div>
+      <h3 class="feature-title">Predictive Intelligence</h3>
+      <p class="feature-desc">Clyvoro's forecasting engine continuously learns from your operational data to surface signals before they become problems — with explainable confidence scores at every step.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3 class="feature-title">Real-Time Processing</h3>
+      <p class="feature-desc">Process millions of events per second with sub-10ms latency. Our distributed inference layer scales automatically, so you never have to think about infrastructure again.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔗</div>
+      <h3 class="feature-title">Universal Connectors</h3>
+      <p class="feature-desc">Connect to any data source in minutes — databases, SaaS tools, data warehouses, or custom APIs — using 200+ pre-built connectors and a zero-code pipeline builder.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛡️</div>
+      <h3 class="feature-title">Enterprise-Grade Security</h3>
+      <p class="feature-desc">SOC 2 Type II, HIPAA, and GDPR compliant by default. Your data never leaves your VPC unless you want it to. Full audit trails on every model inference and decision.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3 class="feature-title">Live Dashboards</h3>
+      <p class="feature-desc">Turn complex model outputs into stakeholder-ready dashboards in minutes. Drill down, filter, and export — all with live data and zero BI tool licenses required.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤖</div>
+      <h3 class="feature-title">Agentic Workflows</h3>
+      <p class="feature-desc">Go beyond analysis — let Clyvoro Agents take action. Automatically trigger alerts, update records, route tickets, or execute playbooks based on model decisions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section class="hiw-section" id="how-it-works">
+  <div class="fade-up">
+    <span class="section-label">How it works</span>
+    <h2 class="section-title">From raw data to action<br/>in three steps</h2>
+  </div>
+
+  <div class="hiw-inner">
+    <div class="hiw-steps fade-up">
+      <div class="hiw-step">
+        <div class="hiw-step-num">1</div>
+        <div class="hiw-step-body">
+          <h4>Connect your data sources</h4>
+          <p>Point Clyvoro at any data — structured tables, event streams, documents, or APIs. Our ingestion layer normalizes and indexes everything automatically, with no custom ETL code.</p>
+        </div>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-step-num">2</div>
+        <div class="hiw-step-body">
+          <h4>Train or deploy a model</h4>
+          <p>Choose from our library of pre-built industry models or fine-tune your own using Clyvoro Studio. Models are versioned, monitored, and continuously retrained as data drifts.</p>
+        </div>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-step-num">3</div>
+        <div class="hiw-step-body">
+          <h4>Act on real-time intelligence</h4>
+          <p>Surface insights through dashboards, APIs, or autonomous agents. Every output is explainable, auditable, and routed to the right person or system at the right time.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hiw-visual fade-up">
+      <div class="hiw-visual-inner">
+        <!-- Animated chart mockup -->
+        <svg width="100%" height="100%" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- Grid lines -->
+          <line x1="40" y1="20" x2="40" y2="260" stroke="rgba(0,200,255,0.15)" stroke-width="1"/>
+          <line x1="40" y1="260" x2="380" y2="260" stroke="rgba(0,200,255,0.15)" stroke-width="1"/>
+          <line x1="40" y1="200" x2="380" y2="200" stroke="rgba(0,200,255,0.08)" stroke-width="1" stroke-dasharray="4"/>
+          <line x1="40" y1="140" x2="380" y2="140" stroke="rgba(0,200,255,0.08)" stroke-width="1" stroke-dasharray="4"/>
+          <line x1="40" y1="80" x2="380" y2="80" stroke="rgba(0,200,255,0.08)" stroke-width="1" stroke-dasharray="4"/>
+
+          <!-- Area fill -->
+          <defs>
+            <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#00c8ff" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#00c8ff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M40,220 L100,180 L160,200 L220,130 L280,100 L340,70 L380,50 L380,260 L40,260 Z" fill="url(#areaGrad)"/>
+
+          <!-- Line -->
+          <polyline points="40,220 100,180 160,200 220,130 280,100 340,70 380,50"
+            fill="none" stroke="url(#lineGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#0066ff"/>
+              <stop offset="100%" stop-color="#00c8ff"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Dots -->
+          <circle cx="280" cy="100" r="5" fill="#00c8ff" opacity="0.9"/>
+          <circle cx="340" cy="70" r="5" fill="#00c8ff" opacity="0.9"/>
+          <circle cx="380" cy="50" r="7" fill="#00c8ff"/>
+
+          <!-- Label -->
+          <rect x="290" y="45" width="80" height="28" rx="6" fill="rgba(0,200,255,0.15)" stroke="rgba(0,200,255,0.3)" stroke-width="1"/>
+          <text x="330" y="63" text-anchor="middle" fill="#00c8ff" font-size="11" font-family="Inter, sans-serif" font-weight="600">+38.4%</text>
+
+          <!-- Y-axis labels -->
+          <text x="30" y="265" text-anchor="end" fill="rgba(126,168,196,0.6)" font-size="9" font-family="Inter, sans-serif">0</text>
+          <text x="30" y="205" text-anchor="end" fill="rgba(126,168,196,0.6)" font-size="9" font-family="Inter, sans-serif">25</text>
+          <text x="30" y="145" text-anchor="end" fill="rgba(126,168,196,0.6)" font-size="9" font-family="Inter, sans-serif">50</text>
+          <text x="30" y="85" text-anchor="end" fill="rgba(126,168,196,0.6)" font-size="9" font-family="Inter, sans-serif">75</text>
+
+          <!-- Mini stat cards -->
+          <rect x="40" y="10" width="90" height="40" rx="6" fill="rgba(10,25,41,0.95)" stroke="rgba(0,200,255,0.15)" stroke-width="1"/>
+          <text x="50" y="27" fill="rgba(126,168,196,0.7)" font-size="8" font-family="Inter, sans-serif">Accuracy</text>
+          <text x="50" y="42" fill="#00c8ff" font-size="13" font-family="Inter, sans-serif" font-weight="700">97.2%</text>
+
+          <rect x="145" y="10" width="90" height="40" rx="6" fill="rgba(10,25,41,0.95)" stroke="rgba(0,200,255,0.15)" stroke-width="1"/>
+          <text x="155" y="27" fill="rgba(126,168,196,0.7)" font-size="8" font-family="Inter, sans-serif">Latency</text>
+          <text x="155" y="42" fill="#4da6ff" font-size="13" font-family="Inter, sans-serif" font-weight="700">8.3ms</text>
+
+          <rect x="252" y="10" width="90" height="40" rx="6" fill="rgba(10,25,41,0.95)" stroke="rgba(0,200,255,0.15)" stroke-width="1"/>
+          <text x="262" y="27" fill="rgba(126,168,196,0.7)" font-size="8" font-family="Inter, sans-serif">Throughput</text>
+          <text x="262" y="42" fill="#00c8ff" font-size="13" font-family="Inter, sans-serif" font-weight="700">2.4M/s</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── USE CASES ─── -->
+<section class="use-cases-section" id="use-cases">
+  <div class="text-center fade-up">
+    <span class="section-label">Use cases</span>
+    <h2 class="section-title">Built for teams across every industry</h2>
+    <p class="section-sub">Whether you're running a global supply chain or a fast-growing SaaS product, Clyvoro adapts to the way your business actually works.</p>
+  </div>
+
+  <div class="use-cases-grid fade-up">
+    <div class="use-case-card">
+      <span class="use-case-tag">Finance</span>
+      <h3>Risk & Fraud Detection</h3>
+      <p>Detect anomalies across millions of transactions in real time. Clyvoro's ensemble models reduce false positives by 60% while catching fraud patterns that rule-based systems miss.</p>
+    </div>
+    <div class="use-case-card">
+      <span class="use-case-tag">Operations</span>
+      <h3>Supply Chain Forecasting</h3>
+      <p>Predict demand shifts, flag supplier risks, and auto-adjust reorder quantities — weeks before disruption hits. Teams using Clyvoro cut stockouts by an average of 42%.</p>
+    </div>
+    <div class="use-case-card">
+      <span class="use-case-tag">Healthcare</span>
+      <h3>Clinical Decision Support</h3>
+      <p>Surface patient risk flags, treatment recommendations, and population health trends directly within your existing EHR — with full explainability for clinician review.</p>
+    </div>
+    <div class="use-case-card">
+      <span class="use-case-tag">Marketing</span>
+      <h3>Audience Intelligence</h3>
+      <p>Move beyond segments and toward real-time, individual-level predictions on churn, LTV, and conversion likelihood — powering campaigns that actually land.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="testimonials-section">
+  <div class="text-center fade-up">
+    <span class="section-label">Customer stories</span>
+    <h2 class="section-title">Teams love Clyvoro</h2>
+  </div>
+
+  <div class="testimonials-grid fade-up">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"We went from 3-week reporting cycles to live dashboards overnight. Clyvoro connected to our data warehouse in under an hour and the model accuracy blew us away."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">AK</div>
+        <div>
+          <div class="testimonial-name">Amara Kone</div>
+          <div class="testimonial-role">VP of Data, Vantex Group</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"The agentic workflows are a game-changer. Our support team is now automatically routing 70% of tickets without any human triage — and satisfaction scores went up, not down."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">JR</div>
+        <div>
+          <div class="testimonial-name">James Rivera</div>
+          <div class="testimonial-role">Head of CX, Solvex Inc.</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Finally an AI platform that doesn't require a full ML team to operate. Our ops analysts are running their own predictive models after two days of onboarding."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">SL</div>
+        <div>
+          <div class="testimonial-name">Sophie Laurent</div>
+          <div class="testimonial-role">COO, Crestline Logistics</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PLATFORM / TECH ─── -->
+<section class="platform-section" id="about">
+  <div class="platform-inner">
+    <div class="fade-up">
+      <span class="section-label">The platform</span>
+      <h2 class="section-title">Built for production. Designed for people.</h2>
+      <p class="section-sub">Clyvoro isn't a research toy — it's an enterprise runtime that ships with the guardrails, observability, and integrations that production teams actually need.</p>
+
+      <ul class="platform-list">
+        <li><div class="check-icon">✓</div> Deploy to cloud, on-prem, or hybrid — your choice</li>
+        <li><div class="check-icon">✓</div> Model versioning, rollback, and A/B testing built in</li>
+        <li><div class="check-icon">✓</div> Role-based access controls and team workspaces</li>
+        <li><div class="check-icon">✓</div> REST & GraphQL APIs, Python SDK, Webhooks</li>
+        <li><div class="check-icon">✓</div> 99.9% uptime SLA with dedicated support</li>
+        <li><div class="check-icon">✓</div> SOC 2 Type II · HIPAA · GDPR · ISO 27001</li>
+      </ul>
+    </div>
+
+    <div class="platform-visual fade-up">
+      <div class="code-block">
+        <span class="cm"># Connect and deploy in minutes</span><br/>
+        <span class="kw">import</span> nexora<br/><br/>
+        <span class="cm"># Initialize with your API key</span><br/>
+        client = nexora.<span class="fn">Client</span>(<span class="str">"nx_live_..."</span>)<br/><br/>
+        <span class="cm"># Load a pre-built model</span><br/>
+        model = client.models.<span class="fn">load</span>(<br/>
+        &nbsp;&nbsp;<span class="str">"churn-predictor-v3"</span><br/>
+        )<br/><br/>
+        <span class="cm"># Score in real time</span><br/>
+        result = model.<span class="fn">predict</span>(<br/>
+        &nbsp;&nbsp;user_id=<span class="str">"usr_8472"</span>,<br/>
+        &nbsp;&nbsp;features=customer_data<br/>
+        )<br/><br/>
+        <span class="cm"># → { "churn_risk": 0.82,</span><br/>
+        <span class="cm">#     "top_drivers": [...],</span><br/>
+        <span class="cm">#     "recommended_action": "..." }</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="cta-section" id="contact">
+  <div class="cta-glow"></div>
+  <div class="cta-inner fade-up">
+    <span class="section-label">Get started</span>
+    <h2>Ready to make your data think?</h2>
+    <p>Start your 14-day free trial — no credit card, no lock-in. Or talk to our team and get a custom demo built around your use case.</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn-primary btn-lg">Start free trial</a>
+      <a href="#" class="btn btn-outline btn-lg">Book a demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">CLY<span>VORO</span></div>
+      <p>Clyvoro is the AI platform for enterprise teams who need real answers in real time — not more dashboards to stare at.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="#">Platform</a></li>
+        <li><a href="#">Integrations</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Changelog</a></li>
+        <li><a href="#">Status</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Developers</h4>
+      <ul>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">API Reference</a></li>
+        <li><a href="#">Python SDK</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Clyvoro, Inc. · clyvoroai.com · All rights reserved. · <a href="#" style="color:var(--text-dim)">Privacy</a> · <a href="#" style="color:var(--text-dim)">Terms</a></p>
+    <div class="footer-socials">
+      <a href="#" class="social-link">𝕏</a>
+      <a href="#" class="social-link">in</a>
+      <a href="#" class="social-link">gh</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── SCROLL ANIMATIONS ─── -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Smooth active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--cyan)' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
