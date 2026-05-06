@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers — Clyvoro</title>
+  <meta name="description" content="Join Clyvoro and help build the AI platform that thinks ahead. We're hiring across engineering, product, and go-to-market." />
+  <link rel="canonical" href="https://clyvoroai.com/careers" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- EmailJS SDK — see EMAIL SETUP section at bottom of file -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #050c14;
+      --bg-2:        #081221;
+      --bg-card:     #0a1929;
+      --bg-card-2:   #0d2137;
+      --border:      rgba(0, 200, 255, 0.12);
+      --border-focus:rgba(0, 200, 255, 0.5);
+      --cyan:        #00c8ff;
+      --cyan-dim:    rgba(0, 200, 255, 0.15);
+      --cyan-glow:   rgba(0, 200, 255, 0.35);
+      --blue:        #0066ff;
+      --text:        #e8f4ff;
+      --text-muted:  #7ea8c4;
+      --text-dim:    #3d6a8a;
+      --white:       #ffffff;
+      --green:       #00e599;
+      --green-dim:   rgba(0, 229, 153, 0.12);
+      --red:         #ff4d6a;
+      --red-dim:     rgba(255, 77, 106, 0.12);
+      --radius:      12px;
+      --radius-lg:   20px;
+      --font-body:   'Inter', sans-serif;
+      --font-display:'Space Grotesk', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 72px;
+      background: rgba(5,12,20,0.85); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; color: var(--white); }
+    .nav-logo span { background: linear-gradient(90deg,var(--cyan),var(--blue)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--cyan); }
+    .nav-cta { display: flex; align-items: center; gap: 1rem; }
+
+    /* ── BUTTONS ── */
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.4rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; font-family: var(--font-body); }
+    .btn-ghost { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
+    .btn-ghost:hover { background: var(--cyan-dim); color: var(--cyan); border-color: var(--cyan); }
+    .btn-primary { background: linear-gradient(135deg,var(--cyan),var(--blue)); color: var(--white); box-shadow: 0 0 20px var(--cyan-glow); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 32px var(--cyan-glow); }
+    .btn-outline { background: transparent; color: var(--cyan); border: 1px solid var(--cyan); }
+    .btn-outline:hover { background: var(--cyan-dim); transform: translateY(-1px); }
+    .btn-lg { padding: 0.85rem 2rem; font-size: 1rem; border-radius: 10px; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+
+    /* ── SECTIONS ── */
+    section { position: relative; padding: 100px 5%; }
+    .section-label { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight: 700; letter-spacing: -0.02em; color: var(--white); line-height: 1.2; margin-bottom: 1rem; }
+    .section-sub { font-size: 1.05rem; color: var(--text-muted); max-width: 560px; line-height: 1.7; }
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin: 0 auto; }
+
+    /* ── HERO ── */
+    .hero { position: relative; min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 140px 5% 80px; overflow: hidden; }
+    .hero-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 900px; height: 600px; background: radial-gradient(ellipse at center, rgba(0,200,255,0.12) 0%, rgba(0,102,255,0.08) 40%, transparent 70%); pointer-events: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 100px; background: var(--cyan-dim); border: 1px solid rgba(0,200,255,0.25); font-size: 0.8rem; font-weight: 600; color: var(--cyan); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2rem; }
+    .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(1.3); } }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem,5vw,4.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; color: var(--white); max-width: 900px; margin-bottom: 1.5rem; }
+    .gradient-text { background: linear-gradient(135deg,var(--cyan) 0%,#4da6ff 50%,var(--blue) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .hero-sub { font-size: clamp(1rem,2vw,1.15rem); color: var(--text-muted); max-width: 580px; margin-bottom: 3rem; line-height: 1.7; }
+    .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+    /* ── STATS STRIP ── */
+    .stats-strip { padding: 50px 5%; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-2); }
+    .stats-row { display: flex; align-items: center; justify-content: center; gap: 4rem; flex-wrap: wrap; }
+    .stat-item { text-align: center; }
+    .stat-value { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--white); line-height: 1; }
+    .stat-value span { color: var(--cyan); }
+    .stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem; }
+    .stat-divider { width: 1px; height: 44px; background: var(--border); }
+
+    /* ── VALUES ── */
+    .values-section { background: var(--bg); }
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5px; margin-top: 4rem; border: 1.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+    .value-card { background: var(--bg-card); padding: 2.5rem; transition: background 0.3s; position: relative; }
+    .value-card:hover { background: rgba(0,200,255,0.04); }
+    .value-card::after { content:''; position:absolute; inset:0; border:1.5px solid var(--border); pointer-events:none; }
+    .value-icon { width: 48px; height: 48px; border-radius: 10px; background: var(--cyan-dim); border: 1px solid rgba(0,200,255,0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.3rem; }
+    .value-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--white); margin-bottom: 0.75rem; }
+    .value-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── BENEFITS ── */
+    .benefits-section { background: var(--bg-2); }
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.5rem; margin-top: 4rem; }
+    .benefit-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; transition: border-color 0.3s, transform 0.3s; }
+    .benefit-card:hover { border-color: var(--cyan); transform: translateY(-4px); }
+    .benefit-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .benefit-title { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
+    .benefit-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── ROLES SECTION ── */
+    .roles-section { background: var(--bg); }
+    .roles-filter { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 3rem; margin-bottom: 2.5rem; }
+    .filter-btn { padding: 0.45rem 1.1rem; border-radius: 100px; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s; border: 1px solid var(--border); background: transparent; color: var(--text-muted); font-family: var(--font-body); }
+    .filter-btn:hover, .filter-btn.active { background: var(--cyan-dim); color: var(--cyan); border-color: var(--cyan); }
+    .roles-list { display: flex; flex-direction: column; gap: 0; }
+
+    /* ── ACCORDION ROLE ITEM ── */
+    .role-item { border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 0.75rem; overflow: hidden; transition: border-color 0.25s; }
+    .role-item.open { border-color: rgba(0,200,255,0.35); }
+    .role-item.hidden { display: none; }
+
+    .role-header {
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+      padding: 1.6rem 2rem; cursor: pointer; background: var(--bg-card);
+      transition: background 0.2s; user-select: none;
+    }
+    .role-header:hover { background: rgba(0,200,255,0.03); }
+    .role-item.open .role-header { background: rgba(0,200,255,0.04); border-bottom: 1px solid var(--border); }
+
+    .role-header-left { flex: 1; min-width: 0; }
+    .role-dept { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cyan); background: var(--cyan-dim); padding: 0.2rem 0.55rem; border-radius: 4px; margin-bottom: 0.55rem; }
+    .role-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--white); margin-bottom: 0.4rem; }
+    .role-meta { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+    .role-meta-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.82rem; color: var(--text-muted); }
+    .role-meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--text-dim); }
+
+    .role-chevron {
+      flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+      border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); transition: all 0.25s; font-size: 0.75rem;
+    }
+    .role-item.open .role-chevron { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); transform: rotate(180deg); }
+
+    /* ── ACCORDION PANEL ── */
+    .role-panel { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); background: var(--bg-card); }
+    .role-item.open .role-panel { max-height: 3000px; }
+    .role-panel-inner { padding: 2rem 2rem 2.5rem; }
+
+    .role-description { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem; }
+
+    .role-section-heading { font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; color: var(--white); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 1rem; margin-top: 1.75rem; }
+    .role-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
+    .role-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+    .role-list li::before { content: ''; flex-shrink: 0; margin-top: 0.45rem; width: 5px; height: 5px; border-radius: 50%; background: var(--cyan); opacity: 0.8; }
+
+    .role-divider { height: 1px; background: var(--border); margin: 2rem 0; }
+
+    /* ── APPLY FORM ── */
+    .apply-heading { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+    .apply-subheading { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.75rem; }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-grid .form-full { grid-column: 1 / -1; }
+
+    .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-label { font-size: 0.82rem; font-weight: 600; color: var(--text); letter-spacing: 0.02em; }
+    .form-label .required { color: var(--cyan); margin-left: 2px; }
+
+    .form-input, .form-textarea, .form-file {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.7rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+      outline: none;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-dim); }
+    .form-input:focus, .form-textarea:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px rgba(0,200,255,0.08); }
+    .form-input.error, .form-textarea.error { border-color: var(--red); box-shadow: 0 0 0 3px var(--red-dim); }
+    .form-textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+
+    /* Resume upload note */
+    .resume-note {
+      background: rgba(0,102,255,0.07);
+      border: 1px solid rgba(0,102,255,0.2);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .resume-note strong { color: var(--text); }
+
+    .form-error-msg { font-size: 0.78rem; color: var(--red); margin-top: 0.15rem; display: none; }
+    .form-error-msg.visible { display: block; }
+
+    .form-submit-row { display: flex; align-items: center; gap: 1.25rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .form-privacy { font-size: 0.78rem; color: var(--text-dim); line-height: 1.5; flex: 1; min-width: 200px; }
+
+    /* Success / Error states */
+    .form-success {
+      display: none;
+      background: var(--green-dim);
+      border: 1px solid rgba(0,229,153,0.3);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .form-success.visible { display: block; }
+    .form-success-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .form-success h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--green); margin-bottom: 0.4rem; }
+    .form-success p { font-size: 0.88rem; color: var(--text-muted); }
+
+    .form-send-error {
+      display: none;
+      background: var(--red-dim);
+      border: 1px solid rgba(255,77,106,0.3);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      font-size: 0.88rem;
+      color: var(--red);
+      margin-top: 1rem;
+    }
+    .form-send-error.visible { display: block; }
+
+    /* ── NO ROLES MSG ── */
+    .no-roles { display: none; text-align: center; padding: 4rem 2rem; color: var(--text-muted); font-size: 0.95rem; }
+
+    /* ── CTA ── */
+    .cta-section { background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 100px 5%; }
+    .cta-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+    .cta-glow { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(0,200,255,0.08) 0%, transparent 70%); pointer-events: none; }
+    .cta-inner h2 { font-family: var(--font-display); font-size: clamp(2rem,4vw,3rem); font-weight: 700; color: var(--white); letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .cta-inner p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2.5rem; }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 60px 5% 40px; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand p { font-size: 0.88rem; color: var(--text-muted); margin-top: 1rem; max-width: 280px; line-height: 1.7; }
+    .footer-col h4 { font-weight: 600; font-size: 0.85rem; color: var(--white); margin-bottom: 1.2rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-col ul li a { font-size: 0.88rem; color: var(--text-muted); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--cyan); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 2rem; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-size: 0.8rem; color: var(--text-dim); }
+    .footer-socials { display: flex; gap: 1rem; }
+    .social-link { width: 36px; height: 36px; border-radius: 8px; background: var(--bg-card); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: var(--text-muted); transition: all 0.2s; }
+    .social-link:hover { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      section { padding: 70px 5%; }
+      .stat-divider { display: none; }
+      .stats-row { gap: 2rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid .form-full { grid-column: 1; }
+      .role-header { padding: 1.25rem 1.25rem; }
+      .role-panel-inner { padding: 1.25rem 1.25rem 2rem; }
+    }
+    @media (max-width: 480px) {
+      .footer-top { grid-template-columns: 1fr; }
+      .form-submit-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-logo">CLY<span>VORO</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#features">Platform</a></li>
+    <li><a href="index.html#how-it-works">How it works</a></li>
+    <li><a href="index.html#use-cases">Use cases</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="careers.html" class="active">Careers</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="#" class="btn btn-ghost">Log in</a>
+    <a href="index.html#contact" class="btn btn-primary">Get started</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge"><div class="hero-badge-dot"></div>We're hiring</div>
+  <h1>Build the Platform That<br/><span class="gradient-text">Thinks Ahead</span></h1>
+  <p class="hero-sub">Clyvoro is on a mission to make enterprise AI actually work — in production, at scale, for real teams. Come help us build it.</p>
+  <div class="hero-actions">
+    <a href="#open-roles" class="btn btn-primary btn-lg">See open roles</a>
+    <a href="#culture" class="btn btn-outline btn-lg">Our culture</a>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-strip">
+  <div class="stats-row">
+    <div class="stat-item"><div class="stat-value">75<span>+</span></div><div class="stat-label">Team members</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><div class="stat-value">12</div><div class="stat-label">Countries represented</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><div class="stat-value">15<span></span></div><div class="stat-label">Open roles</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><div class="stat-value">Series <span>B</span></div><div class="stat-label">Funding stage</div></div>
+  </div>
+</div>
+
+<!-- ── VALUES ── -->
+<section class="values-section" id="culture">
+  <div class="text-center fade-up">
+    <span class="section-label">How we work</span>
+    <h2 class="section-title">Values we actually live by</h2>
+    <p class="section-sub">We're building something hard. These are the principles that guide how we work together every day.</p>
+  </div>
+  <div class="values-grid fade-up">
+    <div class="value-card"><div class="value-icon">🔭</div><h3 class="value-title">Think in Systems</h3><p class="value-desc">We zoom out before we zoom in. Understanding the full picture leads to better decisions than optimizing in isolation.</p></div>
+    <div class="value-card"><div class="value-icon">⚡</div><h3 class="value-title">Bias for Action</h3><p class="value-desc">We ship, learn, and iterate. A working prototype beats a perfect plan. We trust each other to move fast and own the outcome.</p></div>
+    <div class="value-card"><div class="value-icon">🤝</div><h3 class="value-title">Radical Transparency</h3><p class="value-desc">We share context widely, give direct feedback, and have hard conversations early. No politics, no silos.</p></div>
+    <div class="value-card"><div class="value-icon">🧩</div><h3 class="value-title">Customer Obsession</h3><p class="value-desc">Our customers deploy AI in high-stakes environments. We treat their trust as sacred — every decision starts with their needs.</p></div>
+    <div class="value-card"><div class="value-icon">📈</div><h3 class="value-title">Grow Relentlessly</h3><p class="value-desc">We hire curious people and invest in making them exceptional. We expect everyone to be better six months from now.</p></div>
+    <div class="value-card"><div class="value-icon">🌍</div><h3 class="value-title">Build for Everyone</h3><p class="value-desc">AI will shape the world. We build equitably and responsibly, with teams that reflect the diversity of the people we serve.</p></div>
+  </div>
+</section>
+
+<!-- ── BENEFITS ── -->
+<section class="benefits-section">
+  <div class="text-center fade-up">
+    <span class="section-label">Benefits & perks</span>
+    <h2 class="section-title">We take care of our people</h2>
+    <p class="section-sub">Competitive compensation is the floor, not the ceiling.</p>
+  </div>
+  <div class="benefits-grid fade-up">
+    <div class="benefit-card"><div class="benefit-icon">💰</div><div class="benefit-title">Competitive Compensation</div><p class="benefit-desc">Top-of-market salary benchmarked quarterly, plus meaningful equity with a 4-year vest and 1-year cliff.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">🏥</div><div class="benefit-title">Full Health Coverage</div><p class="benefit-desc">100% employer-paid medical, dental, and vision for you and your dependents. No copays, no surprises.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">🌴</div><div class="benefit-title">Flexible PTO</div><p class="benefit-desc">Unlimited paid time off with a 2-week minimum encouraged. Leadership takes vacation and you should too.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">🏠</div><div class="benefit-title">Remote-First</div><p class="benefit-desc">Work from wherever you're most productive. Hubs in SF, NYC, and London — but most of the team is distributed.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">📚</div><div class="benefit-title">Learning Budget</div><p class="benefit-desc">$2,500/year for conferences, courses, or books. No approval process — just grow.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">🖥️</div><div class="benefit-title">Home Office Stipend</div><p class="benefit-desc">$1,500 setup allowance on day one, plus $100/month for coworking or internet.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">👶</div><div class="benefit-title">Parental Leave</div><p class="benefit-desc">16 weeks fully paid for all parents, regardless of gender or how your family was formed.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">✈️</div><div class="benefit-title">Annual Offsite</div><p class="benefit-desc">The whole company, once a year, for a week of strategy, collaboration, and great food.</p></div>
+  </div>
+</section>
+
+<!-- ── OPEN ROLES ── -->
+<section class="roles-section" id="open-roles">
+  <div class="fade-up">
+    <span class="section-label">Open positions</span>
+    <h2 class="section-title">Find your role</h2>
+    <p class="section-sub">We're a small team doing big things. Every hire meaningfully shapes the company.</p>
+  </div>
+
+  <div class="roles-filter fade-up">
+    <button class="filter-btn active" data-filter="all">All departments</button>
+    <button class="filter-btn" data-filter="engineering">Engineering</button>
+    <button class="filter-btn" data-filter="product">Product</button>
+    <button class="filter-btn" data-filter="ml">ML & Research</button>
+    <button class="filter-btn" data-filter="gtm">Go-to-Market</button>
+    <button class="filter-btn" data-filter="ops">Operations</button>
+  </div>
+
+  <div class="roles-list fade-up" id="roles-list">
+
+    <!-- ═══ ENGINEERING ═══ -->
+
+    <div class="role-item" data-dept="engineering">
+      <div class="role-header" onclick="toggleRole(this)">
+        <div class="role-header-left">
+          <span class="role-dept">Engineering</span>
+          <div class="role-title">Senior Backend Engineer — Inference Platform</div>
+          <div class="role-meta">
+            <span class="role-meta-item">🌍 Remote (US/EU)</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">Full-time</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">$180k – $230k + equity</span>
+          </div>
+        </div>
+        <div class="role-chevron">▼</div>
+      </div>
+      <div class="role-panel">
+        <div class="role-panel-inner">
+          <p class="role-description">You'll own the core inference layer that runs Clyvoro's ML models in production — the system that processes millions of predictions per day with sub-10ms latency. This is a high-ownership role: you'll design, build, and scale the infrastructure that sits at the heart of everything we ship.</p>
+          <div class="role-section-heading">Responsibilities</div>
+          <ul class="role-list">
+            <li>Design and maintain the low-latency model serving infrastructure handling millions of requests/day</li>
+            <li>Build and optimize distributed systems for real-time feature computation and prediction serving</li>
+            <li>Collaborate closely with ML engineers to productionize new model architectures efficiently</li>
+            <li>Drive reliability improvements — SLO design, alerting, graceful degradation, and runbook documentation</li>
+            <li>Mentor junior engineers and establish backend best practices across the platform team</li>
+          </ul>
+          <div class="role-section-heading">Requirements</div>
+          <ul class="role-list">
+            <li>5+ years of backend engineering experience, with strong proficiency in Go, Rust, or Python</li>
+            <li>Deep experience building and operating distributed systems at scale (Kafka, gRPC, Redis, etc.)</li>
+            <li>Familiarity with ML serving patterns — batching, caching, model versioning, A/B routing</li>
+            <li>Track record of owning production systems with high-availability requirements</li>
+            <li>Strong written communication and comfort working asynchronously across time zones</li>
+          </ul>
+          <div class="role-divider"></div>
+          <div class="apply-heading">Apply for this role</div>
+          <p class="apply-subheading">Fill out the form below and we'll get back to you within 5 business days.</p>
+          <form class="apply-form" onsubmit="submitApplication(event, this, 'Senior Backend Engineer — Inference Platform', 'Engineering', 'Remote (US/EU)')">
+            <div class="form-grid">
+              <div class="form-field">
+                <label class="form-label">Full name <span class="required">*</span></label>
+                <input type="text" class="form-input" name="name" placeholder="Jane Smith" required />
+                <span class="form-error-msg">Please enter your full name.</span>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Email address <span class="required">*</span></label>
+                <input type="email" class="form-input" name="email" placeholder="jane@example.com" required />
+                <span class="form-error-msg">Please enter a valid email.</span>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Phone number</label>
+                <input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000" />
+              </div>
+              <div class="form-field">
+                <label class="form-label">LinkedIn URL</label>
+                <input type="url" class="form-input" name="linkedin" placeholder="https://linkedin.com/in/yourname" />
+              </div>
+              <div class="form-field">
+                <label class="form-label">Portfolio / website</label>
+                <input type="url" class="form-input" name="portfolio" placeholder="https://yoursite.com" />
+              </div>
+              <div class="form-field form-full">
+                <label class="form-label">Cover note <span class="required">*</span></label>
+                <textarea class="form-textarea" name="message" placeholder="Tell us why you're excited about this role and what makes you a great fit..." required></textarea>
+                <span class="form-error-msg">Please add a short cover note.</span>
+              </div>
+              <div class="form-field form-full">
+                <label class="form-label">Resume</label>
+                <div class="resume-note">
+                  <strong>Resume upload coming soon.</strong> For now, please paste a link to your resume or LinkedIn above, or email your resume directly to <a href="mailto:admin@clyvoroai.com" style="color:var(--cyan)">admin@clyvoroai.com</a> with the subject line "Resume – Senior Backend Engineer".
+                  <!-- DEV NOTE: To enable file upload, add a Vercel serverless function at /api/apply.js
+                       that accepts multipart/form-data, uploads the file to Cloudinary or AWS S3,
+                       and sends the download URL via Resend or Nodemailer. See README for setup. -->
+                </div>
+              </div>
+            </div>
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-primary btn-lg">Submit application →</button>
+              <p class="form-privacy">Your information is kept private and only shared with the Clyvoro hiring team.</p>
+            </div>
+            <div class="form-success"><div class="form-success-icon">✅</div><h4>Application received!</h4><p>Thanks for applying. We'll review your application and be in touch within 5 business days.</p></div>
+            <div class="form-send-error">Something went wrong sending your application. Please email us directly at <a href="mailto:admin@clyvoroai.com" style="color:var(--red)">admin@clyvoroai.com</a>.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-item" data-dept="engineering">
+      <div class="role-header" onclick="toggleRole(this)">
+        <div class="role-header-left">
+          <span class="role-dept">Engineering</span>
+          <div class="role-title">Staff Engineer — Data Infrastructure</div>
+          <div class="role-meta">
+            <span class="role-meta-item">🌍 Remote (US)</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">Full-time</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">$200k – $260k + equity</span>
+          </div>
+        </div>
+        <div class="role-chevron">▼</div>
+      </div>
+      <div class="role-panel">
+        <div class="role-panel-inner">
+          <p class="role-description">As a Staff Engineer on Data Infrastructure, you'll define how Clyvoro ingests, stores, and serves terabytes of customer data in real time. You'll set the technical direction for our data platform, partner with ML and product teams, and be the go-to person for making hard architectural calls.</p>
+          <div class="role-section-heading">Responsibilities</div>
+          <ul class="role-list">
+            <li>Lead the design and evolution of Clyvoro's data ingestion and storage architecture</li>
+            <li>Own the streaming data pipeline (Kafka, Flink, Spark) end-to-end, from connectors to feature stores</li>
+            <li>Establish engineering standards for data quality, schema management, and observability</li>
+            <li>Partner cross-functionally with ML, backend, and security teams on platform-level decisions</li>
+            <li>Identify and drive 10x improvements in performance, reliability, and cost efficiency</li>
+          </ul>
+          <div class="role-section-heading">Requirements</div>
+          <ul class="role-list">
+            <li>8+ years of experience in data or infrastructure engineering, including staff-level IC work</li>
+            <li>Expert-level knowledge of stream processing systems (Kafka, Flink, Spark Streaming)</li>
+            <li>Strong experience with cloud data platforms (Snowflake, BigQuery, Databricks, or similar)</li>
+            <li>Demonstrated ability to set technical direction and influence across teams without authority</li>
+            <li>Experience in a high-growth startup or scaling data platform from 0→1 at a larger company</li>
+          </ul>
+          <div class="role-divider"></div>
+          <div class="apply-heading">Apply for this role</div>
+          <p class="apply-subheading">Fill out the form below and we'll get back to you within 5 business days.</p>
+          <form class="apply-form" onsubmit="submitApplication(event, this, 'Staff Engineer — Data Infrastructure', 'Engineering', 'Remote (US)')">
+            <div class="form-grid">
+              <div class="form-field"><label class="form-label">Full name <span class="required">*</span></label><input type="text" class="form-input" name="name" placeholder="Jane Smith" required /><span class="form-error-msg">Please enter your full name.</span></div>
+              <div class="form-field"><label class="form-label">Email address <span class="required">*</span></label><input type="email" class="form-input" name="email" placeholder="jane@example.com" required /><span class="form-error-msg">Please enter a valid email.</span></div>
+              <div class="form-field"><label class="form-label">Phone number</label><input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000" /></div>
+              <div class="form-field"><label class="form-label">LinkedIn URL</label><input type="url" class="form-input" name="linkedin" placeholder="https://linkedin.com/in/yourname" /></div>
+              <div class="form-field"><label class="form-label">Portfolio / website</label><input type="url" class="form-input" name="portfolio" placeholder="https://yoursite.com" /></div>
+              <div class="form-field form-full"><label class="form-label">Cover note <span class="required">*</span></label><textarea class="form-textarea" name="message" placeholder="Tell us why you're excited about this role and what makes you a great fit..." required></textarea><span class="form-error-msg">Please add a short cover note.</span></div>
+              <div class="form-field form-full"><label class="form-label">Resume</label><div class="resume-note"><strong>Resume upload coming soon.</strong> Please paste a link to your resume or LinkedIn above, or email directly to <a href="mailto:admin@clyvoroai.com" style="color:var(--cyan)">admin@clyvoroai.com</a>.</div></div>
+            </div>
+            <div class="form-submit-row"><button type="submit" class="btn btn-primary btn-lg">Submit application →</button><p class="form-privacy">Your information is kept private and only shared with the Clyvoro hiring team.</p></div>
+            <div class="form-success"><div class="form-success-icon">✅</div><h4>Application received!</h4><p>Thanks for applying. We'll be in touch within 5 business days.</p></div>
+            <div class="form-send-error">Something went wrong. Please email <a href="mailto:admin@clyvoroai.com" style="color:var(--red)">admin@clyvoroai.com</a> directly.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-item" data-dept="engineering">
+      <div class="role-header" onclick="toggleRole(this)">
+        <div class="role-header-left">
+          <span class="role-dept">Engineering</span>
+          <div class="role-title">Frontend Engineer — Dashboard & Visualization</div>
+          <div class="role-meta">
+            <span class="role-meta-item">🌍 Remote</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">Full-time</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">$150k – $195k + equity</span>
+          </div>
+        </div>
+        <div class="role-chevron">▼</div>
+      </div>
+      <div class="role-panel">
+        <div class="role-panel-inner">
+          <p class="role-description">You'll build the data visualization and dashboard experiences that enterprise users live in every day — turning complex ML model outputs into clear, fast, beautiful interfaces. This is a high-craft role for someone who cares as much about performance and accessibility as they do about pixel-perfect design.</p>
+          <div class="role-section-heading">Responsibilities</div>
+          <ul class="role-list">
+            <li>Build and maintain Clyvoro's real-time dashboard product using React and D3/Recharts</li>
+            <li>Own the design-to-code pipeline in close partnership with our product designer</li>
+            <li>Drive performance: fast initial loads, smooth 60fps interactions, and efficient data fetching</li>
+            <li>Build reusable component systems and contribute to our internal design system</li>
+            <li>Collaborate with backend engineers on WebSocket and API contract design for live data</li>
+          </ul>
+          <div class="role-section-heading">Requirements</div>
+          <ul class="role-list">
+            <li>4+ years of frontend engineering experience with React and TypeScript</li>
+            <li>Strong data visualization skills — experience with D3, Recharts, Vega, or similar</li>
+            <li>Obsessive attention to detail in UI quality, accessibility (WCAG), and cross-browser behavior</li>
+            <li>Experience working from Figma designs and contributing feedback to designers</li>
+            <li>Bonus: experience building enterprise SaaS products or analytics tools</li>
+          </ul>
+          <div class="role-divider"></div>
+          <div class="apply-heading">Apply for this role</div>
+          <p class="apply-subheading">Fill out the form below and we'll get back to you within 5 business days.</p>
+          <form class="apply-form" onsubmit="submitApplication(event, this, 'Frontend Engineer — Dashboard & Visualization', 'Engineering', 'Remote')">
+            <div class="form-grid">
+              <div class="form-field"><label class="form-label">Full name <span class="required">*</span></label><input type="text" class="form-input" name="name" placeholder="Jane Smith" required /><span class="form-error-msg">Please enter your full name.</span></div>
+              <div class="form-field"><label class="form-label">Email address <span class="required">*</span></label><input type="email" class="form-input" name="email" placeholder="jane@example.com" required /><span class="form-error-msg">Please enter a valid email.</span></div>
+              <div class="form-field"><label class="form-label">Phone number</label><input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000" /></div>
+              <div class="form-field"><label class="form-label">LinkedIn URL</label><input type="url" class="form-input" name="linkedin" placeholder="https://linkedin.com/in/yourname" /></div>
+              <div class="form-field"><label class="form-label">Portfolio / website</label><input type="url" class="form-input" name="portfolio" placeholder="https://yoursite.com" /></div>
+              <div class="form-field form-full"><label class="form-label">Cover note <span class="required">*</span></label><textarea class="form-textarea" name="message" placeholder="Tell us why you're excited about this role and what makes you a great fit..." required></textarea><span class="form-error-msg">Please add a short cover note.</span></div>
+              <div class="form-field form-full"><label class="form-label">Resume</label><div class="resume-note"><strong>Resume upload coming soon.</strong> Please paste a link to your resume or LinkedIn above, or email directly to <a href="mailto:admin@clyvoroai.com" style="color:var(--cyan)">admin@clyvoroai.com</a>.</div></div>
+            </div>
+            <div class="form-submit-row"><button type="submit" class="btn btn-primary btn-lg">Submit application →</button><p class="form-privacy">Your information is kept private and only shared with the Clyvoro hiring team.</p></div>
+            <div class="form-success"><div class="form-success-icon">✅</div><h4>Application received!</h4><p>Thanks for applying. We'll be in touch within 5 business days.</p></div>
+            <div class="form-send-error">Something went wrong. Please email <a href="mailto:admin@clyvoroai.com" style="color:var(--red)">admin@clyvoroai.com</a> directly.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PRODUCT ═══ -->
+
+    <div class="role-item" data-dept="product">
+      <div class="role-header" onclick="toggleRole(this)">
+        <div class="role-header-left">
+          <span class="role-dept">Product</span>
+          <div class="role-title">Senior Product Manager — Core Platform</div>
+          <div class="role-meta">
+            <span class="role-meta-item">🌍 Remote (US/EU)</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">Full-time</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">$160k – $200k + equity</span>
+          </div>
+        </div>
+        <div class="role-chevron">▼</div>
+      </div>
+      <div class="role-panel">
+        <div class="role-panel-inner">
+          <p class="role-description">You'll own the roadmap and strategy for Clyvoro's core platform — the connectors, pipelines, model studio, and deployment tooling that enterprise data teams rely on. This means deep customer empathy, tight collaboration with engineering and design, and strong opinions backed by data.</p>
+          <div class="role-section-heading">Responsibilities</div>
+          <ul class="role-list">
+            <li>Own the product vision, roadmap, and prioritization for the core platform surface area</li>
+            <li>Conduct regular customer discovery with enterprise accounts to identify pain points and opportunities</li>
+            <li>Write crisp PRDs, define success metrics, and lead cross-functional delivery from kick-off to launch</li>
+            <li>Partner with Sales and Customer Success to ensure product–market fit signals flow back into the roadmap</li>
+            <li>Set the quality bar for the team — push back on scope, ship incrementally, and measure outcomes rigorously</li>
+          </ul>
+          <div class="role-section-heading">Requirements</div>
+          <ul class="role-list">
+            <li>5+ years of product management experience, ideally in B2B SaaS or data/AI infrastructure</li>
+            <li>Strong technical foundation — you can read API docs, understand data pipelines, and have productive conversations with engineers</li>
+            <li>Experience owning a product area with multiple competing stakeholders and enterprise customers</li>
+            <li>Clear, direct written communication style and strong facilitation skills</li>
+            <li>Bonus: background in data engineering, ML tooling, or analytics platforms</li>
+          </ul>
+          <div class="role-divider"></div>
+          <div class="apply-heading">Apply for this role</div>
+          <p class="apply-subheading">Fill out the form below and we'll get back to you within 5 business days.</p>
+          <form class="apply-form" onsubmit="submitApplication(event, this, 'Senior Product Manager — Core Platform', 'Product', 'Remote (US/EU)')">
+            <div class="form-grid">
+              <div class="form-field"><label class="form-label">Full name <span class="required">*</span></label><input type="text" class="form-input" name="name" placeholder="Jane Smith" required /><span class="form-error-msg">Please enter your full name.</span></div>
+              <div class="form-field"><label class="form-label">Email address <span class="required">*</span></label><input type="email" class="form-input" name="email" placeholder="jane@example.com" required /><span class="form-error-msg">Please enter a valid email.</span></div>
+              <div class="form-field"><label class="form-label">Phone number</label><input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000" /></div>
+              <div class="form-field"><label class="form-label">LinkedIn URL</label><input type="url" class="form-input" name="linkedin" placeholder="https://linkedin.com/in/yourname" /></div>
+              <div class="form-field"><label class="form-label">Portfolio / website</label><input type="url" class="form-input" name="portfolio" placeholder="https://yoursite.com" /></div>
+              <div class="form-field form-full"><label class="form-label">Cover note <span class="required">*</span></label><textarea class="form-textarea" name="message" placeholder="Tell us why you're excited about this role and what makes you a great fit..." required></textarea><span class="form-error-msg">Please add a short cover note.</span></div>
+              <div class="form-field form-full"><label class="form-label">Resume</label><div class="resume-note"><strong>Resume upload coming soon.</strong> Please paste a link to your resume or LinkedIn above, or email directly to <a href="mailto:admin@clyvoroai.com" style="color:var(--cyan)">admin@clyvoroai.com</a>.</div></div>
+            </div>
+            <div class="form-submit-row"><button type="submit" class="btn btn-primary btn-lg">Submit application →</button><p class="form-privacy">Your information is kept private and only shared with the Clyvoro hiring team.</p></div>
+            <div class="form-success"><div class="form-success-icon">✅</div><h4>Application received!</h4><p>Thanks for applying. We'll be in touch within 5 business days.</p></div>
+            <div class="form-send-error">Something went wrong. Please email <a href="mailto:admin@clyvoroai.com" style="color:var(--red)">admin@clyvoroai.com</a> directly.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-item" data-dept="product">
+      <div class="role-header" onclick="toggleRole(this)">
+        <div class="role-header-left">
+          <span class="role-dept">Product</span>
+          <div class="role-title">Product Designer — Enterprise UX</div>
+          <div class="role-meta">
+            <span class="role-meta-item">🌍 Remote</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">Full-time</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">$140k – $180k + equity</span>
+          </div>
+        </div>
+        <div class="role-chevron">▼</div>
+      </div>
+      <div class="role-panel">
+        <div class="role-panel-inner">
+          <p class="role-description">You'll be Clyvoro's first dedicated product designer — shaping the visual language and interaction model of a platform used by enterprise data teams around the world. You'll work end-to-end: from research and wireframes through high-fidelity specs and design system components.</p>
+          <div class="role-section-heading">Responsibilities</div>
+          <ul class="role-list">
+            <li>Own the end-to-end design process for core product flows — from discovery through delivery</li>
+            <li>Build and maintain a scalable design system in Figma that engineers can implement directly</li>
+            <li>Run user research sessions with enterprise customers and synthesize findings into design decisions</li>
+            <li>Establish the visual identity and interaction patterns for new product areas</li>
+            <li>Partner with frontend engineers to ensure high-fidelity implementation and fast iteration</li>
+          </ul>
+          <div class="role-section-heading">Requirements</div>
+          <ul class="role-list">
+            <li>4+ years of product design experience, with a portfolio of shipped B2B SaaS products</li>
+            <li>Expert Figma skills — components, auto-layout, variables, and design tokens</li>
+            <li>Strong systems thinking: you design components, not screens</li>
+            <li>Experience designing complex data-heavy UIs (tables, charts, filters, dashboards)</li>
+            <li>Comfortable translating ambiguous problem spaces into clear, structured design solutions</li>
+          </ul>
+          <div class="role-divider"></div>
+          <div class="apply-heading">Apply for this role</div>
+          <p class="apply-subheading">Fill out the form below and we'll get back to you within 5 business days.</p>
+          <form class="apply-form" onsubmit="submitApplication(event, this, 'Product Designer — Enterprise UX', 'Product', 'Remote')">
+            <div class="form-grid">
+              <div class="form-field"><label class="form-label">Full name <span class="required">*</span></label><input type="text" class="form-input" name="name" placeholder="Jane Smith" required /><span class="form-error-msg">Please enter your full name.</span></div>
+              <div class="form-field"><label class="form-label">Email address <span class="required">*</span></label><input type="email" class="form-input" name="email" placeholder="jane@example.com" required /><span class="form-error-msg">Please enter a valid email.</span></div>
+              <div class="form-field"><label class="form-label">Phone number</label><input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000" /></div>
+              <div class="form-field"><label class="form-label">LinkedIn URL</label><input type="url" class="form-input" name="linkedin" placeholder="https://linkedin.com/in/yourname" /></div>
+              <div class="form-field"><label class="form-label">Portfolio / website <span class="required">*</span></label><input type="url" class="form-input" name="portfolio" placeholder="https://yourportfolio.com" required /><span class="form-error-msg">Please include your portfolio URL.</span></div>
+              <div class="form-field form-full"><label class="form-label">Cover note <span class="required">*</span></label><textarea class="form-textarea" name="message" placeholder="Tell us about your design philosophy and a project you're proud of..." required></textarea><span class="form-error-msg">Please add a short cover note.</span></div>
+              <div class="form-field form-full"><label class="form-label">Resume</label><div class="resume-note"><strong>Resume upload coming soon.</strong> Please paste a link to your resume or LinkedIn above, or email directly to <a href="mailto:admin@clyvoroai.com" style="color:var(--cyan)">admin@clyvoroai.com</a>.</div></div>
+            </div>
+            <div class="form-submit-row"><button type="submit" class="btn btn-primary btn-lg">Submit application →</button><p class="form-privacy">Your information is kept private and only shared with the Clyvoro hiring team.</p></div>
+            <div class="form-success"><div class="form-success-icon">✅</div><h4>Application received!</h4><p>Thanks for applying. We'll be in touch within 5 business days.</p></div>
+            <div class="form-send-error">Something went wrong. Please email <a href="mailto:admin@clyvoroai.com" style="color:var(--red)">admin@clyvoroai.com</a> directly.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ ML & RESEARCH ═══ -->
+
+    <div class="role-item" data-dept="ml">
+      <div class="role-header" onclick="toggleRole(this)">
+        <div class="role-header-left">
+          <span class="role-dept">ML & Research</span>
+          <div class="role-title">ML Engineer — Forecasting & Time-Series Models</div>
+          <div class="role-meta">
+            <span class="role-meta-item">🌍 Remote</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">Full-time</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">$180k – $240k + equity</span>
+          </div>
+        </div>
+        <div class="role-chevron">▼</div>
+      </div>
+      <div class="role-panel">
+        <div class="role-panel-inner">
+          <p class="role-description">You'll work on Clyvoro's forecasting engine — the models that predict demand shifts, churn, fraud signals, and operational anomalies across our enterprise customer base. This is applied ML work: you'll take research ideas from paper to production and own the full model lifecycle.</p>
+          <div class="role-section-heading">Responsibilities</div>
+          <ul class="role-list">
+            <li>Develop and productionize time-series forecasting and anomaly detection models</li>
+            <li>Design feature engineering pipelines and evaluate model performance across customer datasets</li>
+            <li>Continuously improve model accuracy, latency, and resource efficiency in production</li>
+            <li>Collaborate with backend engineers to integrate models into the inference platform</li>
+            <li>Stay current with ML research and bring relevant techniques into the product</li>
+          </ul>
+          <div class="role-section-heading">Requirements</div>
+          <ul class="role-list">
+            <li>4+ years of ML engineering experience with production models (not just research/notebooks)</li>
+            <li>Strong proficiency in Python and ML frameworks (PyTorch, scikit-learn, statsmodels)</li>
+            <li>Deep familiarity with time-series methods — ARIMA, Prophet, LSTMs, Transformers for sequences</li>
+            <li>Experience with ML experiment tracking, model registries, and CI/CD for models</li>
+            <li>Bonus: experience with probabilistic forecasting or uncertainty quantification</li>
+          </ul>
+          <div class="role-divider"></div>
+          <div class="apply-heading">Apply for this role</div>
+          <p class="apply-subheading">Fill out the form below and we'll get back to you within 5 business days.</p>
+          <form class="apply-form" onsubmit="submitApplication(event, this, 'ML Engineer — Forecasting & Time-Series Models', 'ML & Research', 'Remote')">
+            <div class="form-grid">
+              <div class="form-field"><label class="form-label">Full name <span class="required">*</span></label><input type="text" class="form-input" name="name" placeholder="Jane Smith" required /><span class="form-error-msg">Please enter your full name.</span></div>
+              <div class="form-field"><label class="form-label">Email address <span class="required">*</span></label><input type="email" class="form-input" name="email" placeholder="jane@example.com" required /><span class="form-error-msg">Please enter a valid email.</span></div>
+              <div class="form-field"><label class="form-label">Phone number</label><input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000" /></div>
+              <div class="form-field"><label class="form-label">LinkedIn URL</label><input type="url" class="form-input" name="linkedin" placeholder="https://linkedin.com/in/yourname" /></div>
+              <div class="form-field"><label class="form-label">Portfolio / website</label><input type="url" class="form-input" name="portfolio" placeholder="https://github.com/yourname" /></div>
+              <div class="form-field form-full"><label class="form-label">Cover note <span class="required">*</span></label><textarea class="form-textarea" name="message" placeholder="Tell us about an ML system you built and are proud of..." required></textarea><span class="form-error-msg">Please add a short cover note.</span></div>
+              <div class="form-field form-full"><label class="form-label">Resume</label><div class="resume-note"><strong>Resume upload coming soon.</strong> Please paste a link to your resume or LinkedIn above, or email directly to <a href="mailto:admin@clyvoroai.com" style="color:var(--cyan)">admin@clyvoroai.com</a>.</div></div>
+            </div>
+            <div class="form-submit-row"><button type="submit" class="btn btn-primary btn-lg">Submit application →</button><p class="form-privacy">Your information is kept private and only shared with the Clyvoro hiring team.</p></div>
+            <div class="form-success"><div class="form-success-icon">✅</div><h4>Application received!</h4><p>Thanks for applying. We'll be in touch within 5 business days.</p></div>
+            <div class="form-send-error">Something went wrong. Please email <a href="mailto:admin@clyvoroai.com" style="color:var(--red)">admin@clyvoroai.com</a> directly.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-item" data-dept="ml">
+      <div class="role-header" onclick="toggleRole(this)">
+        <div class="role-header-left">
+          <span class="role-dept">ML & Research</span>
+          <div class="role-title">Research Scientist — Explainable AI</div>
+          <div class="role-meta">
+            <span class="role-meta-item">🌍 Remote</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">Full-time</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">$190k – $260k + equity</span>
+          </div>
+        </div>
+        <div class="role-chevron">▼</div>
+      </div>
+      <div class="role-panel">
+        <div class="role-panel-inner">
+          <p class="role-description">Clyvoro's enterprise customers can't deploy black-box models — they need to explain every prediction to regulators, clinicians, and executives. You'll lead research into explainability methods and translate them into production-grade features that make Clyvoro the most trustworthy AI platform on the market.</p>
+          <div class="role-section-heading">Responsibilities</div>
+          <ul class="role-list">
+            <li>Research and implement state-of-the-art explainability methods (SHAP, LIME, attention mechanisms, concept bottlenecks)</li>
+            <li>Work closely with product to design human-readable explanation UIs for non-technical users</li>
+            <li>Publish research findings internally and externally to establish Clyvoro as a thought leader in XAI</li>
+            <li>Collaborate with compliance teams and enterprise customers on regulatory requirements (EU AI Act, HIPAA, SR 11-7)</li>
+            <li>Build evaluation frameworks for measuring explanation quality, faithfulness, and user understanding</li>
+          </ul>
+          <div class="role-section-heading">Requirements</div>
+          <ul class="role-list">
+            <li>PhD or equivalent research experience in machine learning, statistics, or a related field</li>
+            <li>Deep expertise in model interpretability techniques and the XAI literature</li>
+            <li>Strong publication record or equivalent evidence of research output</li>
+            <li>Ability to bridge research and production — you've shipped explainability features, not just papers</li>
+            <li>Experience working with stakeholders on compliance or model governance is a strong plus</li>
+          </ul>
+          <div class="role-divider"></div>
+          <div class="apply-heading">Apply for this role</div>
+          <p class="apply-subheading">Fill out the form below and we'll get back to you within 5 business days.</p>
+          <form class="apply-form" onsubmit="submitApplication(event, this, 'Research Scientist — Explainable AI', 'ML & Research', 'Remote')">
+            <div class="form-grid">
+              <div class="form-field"><label class="form-label">Full name <span class="required">*</span></label><input type="text" class="form-input" name="name" placeholder="Jane Smith" required /><span class="form-error-msg">Please enter your full name.</span></div>
+              <div class="form-field"><label class="form-label">Email address <span class="required">*</span></label><input type="email" class="form-input" name="email" placeholder="jane@example.com" required /><span class="form-error-msg">Please enter a valid email.</span></div>
+              <div class="form-field"><label class="form-label">Phone number</label><input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000" /></div>
+              <div class="form-field"><label class="form-label">LinkedIn / Google Scholar URL</label><input type="url" class="form-input" name="linkedin" placeholder="https://scholar.google.com/..." /></div>
+              <div class="form-field"><label class="form-label">Portfolio / website</label><input type="url" class="form-input" name="portfolio" placeholder="https://yoursite.com" /></div>
+              <div class="form-field form-full"><label class="form-label">Cover note <span class="required">*</span></label><textarea class="form-textarea" name="message" placeholder="Describe your most significant research contribution and what drew you to explainable AI..." required></textarea><span class="form-error-msg">Please add a short cover note.</span></div>
+              <div class="form-field form-full"><label class="form-label">Resume</label><div class="resume-note"><strong>Resume upload coming soon.</strong> Please paste a link to your resume or LinkedIn above, or email directly to <a href="mailto:admin@clyvoroai.com" style="color:var(--cyan)">admin@clyvoroai.com</a>.</div></div>
+            </div>
+            <div class="form-submit-row"><button type="submit" class="btn btn-primary btn-lg">Submit application →</button><p class="form-privacy">Your information is kept private and only shared with the Clyvoro hiring team.</p></div>
+            <div class="form-success"><div class="form-success-icon">✅</div><h4>Application received!</h4><p>Thanks for applying. We'll be in touch within 5 business days.</p></div>
+            <div class="form-send-error">Something went wrong. Please email <a href="mailto:admin@clyvoroai.com" style="color:var(--red)">admin@clyvoroai.com</a> directly.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ GO-TO-MARKET ═══ -->
+
+    <div class="role-item" data-dept="gtm">
+      <div class="role-header" onclick="toggleRole(this)">
+        <div class="role-header-left">
+          <span class="role-dept">Go-to-Market</span>
+          <div class="role-title">Enterprise Account Executive</div>
+          <div class="role-meta">
+            <span class="role-meta-item">📍 San Francisco / New York</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">Full-time</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">$130k – $160k base + commission</span>
+          </div>
+        </div>
+        <div class="role-chevron">▼</div>
+      </div>
+      <div class="role-panel">
+        <div class="role-panel-inner">
+          <p class="role-description">You'll own the full sales cycle for enterprise accounts — from initial outreach and discovery through technical evaluation, negotiation, and close. Our AEs are trusted advisors: you'll understand a prospect's data stack, identify where Clyvoro creates the most value, and build champions at the VP and C-suite level.</p>
+          <div class="role-section-heading">Responsibilities</div>
+          <ul class="role-list">
+            <li>Own a quota of $1M–$2M ARR and manage a pipeline of 30–50 enterprise accounts</li>
+            <li>Lead multi-threaded deals involving data engineering, IT, legal, and executive stakeholders</li>
+            <li>Partner with Solutions Engineers to run technical evaluations and proof-of-concepts</li>
+            <li>Contribute to playbook development, competitive positioning, and sales enablement materials</li>
+            <li>Provide structured feedback to product on enterprise buyer needs and blockers</li>
+          </ul>
+          <div class="role-section-heading">Requirements</div>
+          <ul class="role-list">
+            <li>5+ years of B2B SaaS sales experience with consistent quota achievement at $100k+ ACV deals</li>
+            <li>Track record closing complex, multi-stakeholder enterprise deals (6–12 month cycles)</li>
+            <li>Comfortable discussing technical topics — data infrastructure, APIs, security/compliance</li>
+            <li>Excellent written and verbal communication; strong executive presence</li>
+            <li>Experience selling data, analytics, or AI/ML tools is a significant plus</li>
+          </ul>
+          <div class="role-divider"></div>
+          <div class="apply-heading">Apply for this role</div>
+          <p class="apply-subheading">Fill out the form below and we'll get back to you within 5 business days.</p>
+          <form class="apply-form" onsubmit="submitApplication(event, this, 'Enterprise Account Executive', 'Go-to-Market', 'San Francisco / New York')">
+            <div class="form-grid">
+              <div class="form-field"><label class="form-label">Full name <span class="required">*</span></label><input type="text" class="form-input" name="name" placeholder="Jane Smith" required /><span class="form-error-msg">Please enter your full name.</span></div>
+              <div class="form-field"><label class="form-label">Email address <span class="required">*</span></label><input type="email" class="form-input" name="email" placeholder="jane@example.com" required /><span class="form-error-msg">Please enter a valid email.</span></div>
+              <div class="form-field"><label class="form-label">Phone number</label><input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000" /></div>
+              <div class="form-field"><label class="form-label">LinkedIn URL</label><input type="url" class="form-input" name="linkedin" placeholder="https://linkedin.com/in/yourname" /></div>
+              <div class="form-field"><label class="form-label">Portfolio / website</label><input type="url" class="form-input" name="portfolio" placeholder="https://yoursite.com" /></div>
+              <div class="form-field form-full"><label class="form-label">Cover note <span class="required">*</span></label><textarea class="form-textarea" name="message" placeholder="Tell us about your most successful enterprise deal and how you closed it..." required></textarea><span class="form-error-msg">Please add a short cover note.</span></div>
+              <div class="form-field form-full"><label class="form-label">Resume</label><div class="resume-note"><strong>Resume upload coming soon.</strong> Please paste a link to your resume or LinkedIn above, or email directly to <a href="mailto:admin@clyvoroai.com" style="color:var(--cyan)">admin@clyvoroai.com</a>.</div></div>
+            </div>
+            <div class="form-submit-row"><button type="submit" class="btn btn-primary btn-lg">Submit application →</button><p class="form-privacy">Your information is kept private and only shared with the Clyvoro hiring team.</p></div>
+            <div class="form-success"><div class="form-success-icon">✅</div><h4>Application received!</h4><p>Thanks for applying. We'll be in touch within 5 business days.</p></div>
+            <div class="form-send-error">Something went wrong. Please email <a href="mailto:admin@clyvoroai.com" style="color:var(--red)">admin@clyvoroai.com</a> directly.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-item" data-dept="gtm">
+      <div class="role-header" onclick="toggleRole(this)">
+        <div class="role-header-left">
+          <span class="role-dept">Go-to-Market</span>
+          <div class="role-title">Solutions Engineer</div>
+          <div class="role-meta">
+            <span class="role-meta-item">🌍 Remote (US)</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">Full-time</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">$150k – $190k + equity</span>
+          </div>
+        </div>
+        <div class="role-chevron">▼</div>
+      </div>
+      <div class="role-panel">
+        <div class="role-panel-inner">
+          <p class="role-description">You'll be the technical bridge between Clyvoro and our enterprise prospects — running proof-of-concepts, answering deep technical questions, and helping customers understand exactly how Clyvoro fits into their stack. The best SEs here become trusted advisors that customers ask for by name.</p>
+          <div class="role-section-heading">Responsibilities</div>
+          <ul class="role-list">
+            <li>Lead technical discovery calls and translate customer requirements into Clyvoro solution designs</li>
+            <li>Build and run customized proof-of-concept environments using real or representative customer data</li>
+            <li>Answer security, architecture, and compliance questions during enterprise evaluations</li>
+            <li>Partner with AEs on RFP responses and technical evaluation criteria</li>
+            <li>Feed structured product feedback from evaluations back to the product and engineering teams</li>
+          </ul>
+          <div class="role-section-heading">Requirements</div>
+          <ul class="role-list">
+            <li>3+ years in a pre-sales, solutions engineering, or technical consulting role</li>
+            <li>Comfortable writing code (Python, SQL) to build demos and integrate with customer data systems</li>
+            <li>Strong understanding of data engineering concepts — ETL, APIs, cloud data warehouses</li>
+            <li>Excellent presentation skills with both technical and executive audiences</li>
+            <li>Experience with AI/ML platforms, BI tools, or data infrastructure products is a plus</li>
+          </ul>
+          <div class="role-divider"></div>
+          <div class="apply-heading">Apply for this role</div>
+          <p class="apply-subheading">Fill out the form below and we'll get back to you within 5 business days.</p>
+          <form class="apply-form" onsubmit="submitApplication(event, this, 'Solutions Engineer', 'Go-to-Market', 'Remote (US)')">
+            <div class="form-grid">
+              <div class="form-field"><label class="form-label">Full name <span class="required">*</span></label><input type="text" class="form-input" name="name" placeholder="Jane Smith" required /><span class="form-error-msg">Please enter your full name.</span></div>
+              <div class="form-field"><label class="form-label">Email address <span class="required">*</span></label><input type="email" class="form-input" name="email" placeholder="jane@example.com" required /><span class="form-error-msg">Please enter a valid email.</span></div>
+              <div class="form-field"><label class="form-label">Phone number</label><input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000" /></div>
+              <div class="form-field"><label class="form-label">LinkedIn URL</label><input type="url" class="form-input" name="linkedin" placeholder="https://linkedin.com/in/yourname" /></div>
+              <div class="form-field"><label class="form-label">Portfolio / website</label><input type="url" class="form-input" name="portfolio" placeholder="https://yoursite.com" /></div>
+              <div class="form-field form-full"><label class="form-label">Cover note <span class="required">*</span></label><textarea class="form-textarea" name="message" placeholder="Tell us about a technical demo or POC you're proud of building..." required></textarea><span class="form-error-msg">Please add a short cover note.</span></div>
+              <div class="form-field form-full"><label class="form-label">Resume</label><div class="resume-note"><strong>Resume upload coming soon.</strong> Please paste a link to your resume or LinkedIn above, or email directly to <a href="mailto:admin@clyvoroai.com" style="color:var(--cyan)">admin@clyvoroai.com</a>.</div></div>
+            </div>
+            <div class="form-submit-row"><button type="submit" class="btn btn-primary btn-lg">Submit application →</button><p class="form-privacy">Your information is kept private and only shared with the Clyvoro hiring team.</p></div>
+            <div class="form-success"><div class="form-success-icon">✅</div><h4>Application received!</h4><p>Thanks for applying. We'll be in touch within 5 business days.</p></div>
+            <div class="form-send-error">Something went wrong. Please email <a href="mailto:admin@clyvoroai.com" style="color:var(--red)">admin@clyvoroai.com</a> directly.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-item" data-dept="gtm">
+      <div class="role-header" onclick="toggleRole(this)">
+        <div class="role-header-left">
+          <span class="role-dept">Go-to-Market</span>
+          <div class="role-title">Head of Marketing</div>
+          <div class="role-meta">
+            <span class="role-meta-item">🌍 Remote (US/EU)</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">Full-time</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">$160k – $200k + equity</span>
+          </div>
+        </div>
+        <div class="role-chevron">▼</div>
+      </div>
+      <div class="role-panel">
+        <div class="role-panel-inner">
+          <p class="role-description">You'll build Clyvoro's marketing function from the ground up — brand, demand gen, content, and analyst relations. This is a builder role: you'll hire the team, establish the strategy, and execute hands-on until we have the team to scale. You'll report directly to the CEO.</p>
+          <div class="role-section-heading">Responsibilities</div>
+          <ul class="role-list">
+            <li>Define and own Clyvoro's brand positioning, messaging architecture, and go-to-market narrative</li>
+            <li>Build and execute a demand generation engine across paid, content, events, and partner channels</li>
+            <li>Own the website, blog, social media, and content calendar end-to-end</li>
+            <li>Establish analyst and press relationships; manage Gartner, Forrester, and key media outreach</li>
+            <li>Hire and develop a small but mighty marketing team as the function scales</li>
+          </ul>
+          <div class="role-section-heading">Requirements</div>
+          <ul class="role-list">
+            <li>8+ years in B2B SaaS marketing, with 2+ years leading a marketing function or team</li>
+            <li>Experience marketing a technical product to data, engineering, or IT buyer personas</li>
+            <li>Strong command of demand generation, pipeline metrics, and marketing attribution</li>
+            <li>Exceptional writer — you can produce world-class content yourself, not just manage others</li>
+            <li>Startup experience: you've built from scratch before and are comfortable with ambiguity</li>
+          </ul>
+          <div class="role-divider"></div>
+          <div class="apply-heading">Apply for this role</div>
+          <p class="apply-subheading">Fill out the form below and we'll get back to you within 5 business days.</p>
+          <form class="apply-form" onsubmit="submitApplication(event, this, 'Head of Marketing', 'Go-to-Market', 'Remote (US/EU)')">
+            <div class="form-grid">
+              <div class="form-field"><label class="form-label">Full name <span class="required">*</span></label><input type="text" class="form-input" name="name" placeholder="Jane Smith" required /><span class="form-error-msg">Please enter your full name.</span></div>
+              <div class="form-field"><label class="form-label">Email address <span class="required">*</span></label><input type="email" class="form-input" name="email" placeholder="jane@example.com" required /><span class="form-error-msg">Please enter a valid email.</span></div>
+              <div class="form-field"><label class="form-label">Phone number</label><input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000" /></div>
+              <div class="form-field"><label class="form-label">LinkedIn URL</label><input type="url" class="form-input" name="linkedin" placeholder="https://linkedin.com/in/yourname" /></div>
+              <div class="form-field"><label class="form-label">Portfolio / website</label><input type="url" class="form-input" name="portfolio" placeholder="https://yoursite.com" /></div>
+              <div class="form-field form-full"><label class="form-label">Cover note <span class="required">*</span></label><textarea class="form-textarea" name="message" placeholder="Describe a campaign or launch you owned that you're especially proud of..." required></textarea><span class="form-error-msg">Please add a short cover note.</span></div>
+              <div class="form-field form-full"><label class="form-label">Resume</label><div class="resume-note"><strong>Resume upload coming soon.</strong> Please paste a link to your resume or LinkedIn above, or email directly to <a href="mailto:admin@clyvoroai.com" style="color:var(--cyan)">admin@clyvoroai.com</a>.</div></div>
+            </div>
+            <div class="form-submit-row"><button type="submit" class="btn btn-primary btn-lg">Submit application →</button><p class="form-privacy">Your information is kept private and only shared with the Clyvoro hiring team.</p></div>
+            <div class="form-success"><div class="form-success-icon">✅</div><h4>Application received!</h4><p>Thanks for applying. We'll be in touch within 5 business days.</p></div>
+            <div class="form-send-error">Something went wrong. Please email <a href="mailto:admin@clyvoroai.com" style="color:var(--red)">admin@clyvoroai.com</a> directly.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ OPERATIONS ═══ -->
+
+    <div class="role-item" data-dept="ops">
+      <div class="role-header" onclick="toggleRole(this)">
+        <div class="role-header-left">
+          <span class="role-dept">Operations</span>
+          <div class="role-title">Head of Finance</div>
+          <div class="role-meta">
+            <span class="role-meta-item">📍 San Francisco</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">Full-time</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">$180k – $220k + equity</span>
+          </div>
+        </div>
+        <div class="role-chevron">▼</div>
+      </div>
+      <div class="role-panel">
+        <div class="role-panel-inner">
+          <p class="role-description">You'll lead Clyvoro's finance function at a pivotal moment — post-Series B, scaling revenue, and preparing for eventual IPO readiness. You'll own FP&A, accounting, and investor relations, and be a strategic partner to the CEO and board on all financial matters.</p>
+          <div class="role-section-heading">Responsibilities</div>
+          <ul class="role-list">
+            <li>Own FP&A: build and maintain the company financial model, board reporting, and operating plan</li>
+            <li>Manage accounting operations, audit readiness, and month-end close processes</li>
+            <li>Lead investor reporting and serve as the primary finance contact for existing investors</li>
+            <li>Partner with the CEO on fundraising strategy, cap table management, and M&A diligence</li>
+            <li>Build and manage a small finance team as the company scales</li>
+          </ul>
+          <div class="role-section-heading">Requirements</div>
+          <ul class="role-list">
+            <li>8+ years in finance, with at least 2 years as a Head of Finance or VP Finance at a startup</li>
+            <li>Deep experience with SaaS financial metrics (ARR, NRR, CAC, LTV, Rule of 40)</li>
+            <li>CPA or Big 4 background preferred; experience with revenue recognition under ASC 606</li>
+            <li>Strong Excel/Google Sheets modeling skills; familiarity with NetSuite or similar ERP</li>
+            <li>Comfortable as a strategic partner to the CEO, not just a keeper of the books</li>
+          </ul>
+          <div class="role-divider"></div>
+          <div class="apply-heading">Apply for this role</div>
+          <p class="apply-subheading">Fill out the form below and we'll get back to you within 5 business days.</p>
+          <form class="apply-form" onsubmit="submitApplication(event, this, 'Head of Finance', 'Operations', 'San Francisco')">
+            <div class="form-grid">
+              <div class="form-field"><label class="form-label">Full name <span class="required">*</span></label><input type="text" class="form-input" name="name" placeholder="Jane Smith" required /><span class="form-error-msg">Please enter your full name.</span></div>
+              <div class="form-field"><label class="form-label">Email address <span class="required">*</span></label><input type="email" class="form-input" name="email" placeholder="jane@example.com" required /><span class="form-error-msg">Please enter a valid email.</span></div>
+              <div class="form-field"><label class="form-label">Phone number</label><input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000" /></div>
+              <div class="form-field"><label class="form-label">LinkedIn URL</label><input type="url" class="form-input" name="linkedin" placeholder="https://linkedin.com/in/yourname" /></div>
+              <div class="form-field"><label class="form-label">Portfolio / website</label><input type="url" class="form-input" name="portfolio" placeholder="https://yoursite.com" /></div>
+              <div class="form-field form-full"><label class="form-label">Cover note <span class="required">*</span></label><textarea class="form-textarea" name="message" placeholder="Tell us about a financial challenge you solved that had a meaningful impact on a company..." required></textarea><span class="form-error-msg">Please add a short cover note.</span></div>
+              <div class="form-field form-full"><label class="form-label">Resume</label><div class="resume-note"><strong>Resume upload coming soon.</strong> Please paste a link to your resume or LinkedIn above, or email directly to <a href="mailto:admin@clyvoroai.com" style="color:var(--cyan)">admin@clyvoroai.com</a>.</div></div>
+            </div>
+            <div class="form-submit-row"><button type="submit" class="btn btn-primary btn-lg">Submit application →</button><p class="form-privacy">Your information is kept private and only shared with the Clyvoro hiring team.</p></div>
+            <div class="form-success"><div class="form-success-icon">✅</div><h4>Application received!</h4><p>Thanks for applying. We'll be in touch within 5 business days.</p></div>
+            <div class="form-send-error">Something went wrong. Please email <a href="mailto:admin@clyvoroai.com" style="color:var(--red)">admin@clyvoroai.com</a> directly.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-item" data-dept="ops">
+      <div class="role-header" onclick="toggleRole(this)">
+        <div class="role-header-left">
+          <span class="role-dept">Operations</span>
+          <div class="role-title">People Operations Manager</div>
+          <div class="role-meta">
+            <span class="role-meta-item">🌍 Remote (US)</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">Full-time</span>
+            <div class="role-meta-dot"></div>
+            <span class="role-meta-item">$120k – $155k + equity</span>
+          </div>
+        </div>
+        <div class="role-chevron">▼</div>
+      </div>
+      <div class="role-panel">
+        <div class="role-panel-inner">
+          <p class="role-description">You'll own the people function at Clyvoro — recruiting operations, onboarding, benefits, performance cycles, and culture programs. This is a high-ownership role with direct impact on what it feels like to work here every day. You'll report to the COO and work closely with every team.</p>
+          <div class="role-section-heading">Responsibilities</div>
+          <ul class="role-list">
+            <li>Own the recruiting operations pipeline — coordination, scheduling, ATS management, offer letters</li>
+            <li>Design and run onboarding programs that get new hires productive and connected quickly</li>
+            <li>Manage benefits administration, PTO policies, and employee relations for a distributed team</li>
+            <li>Lead bi-annual performance review cycles and 360 feedback programs</li>
+            <li>Build culture programs and company rituals that reinforce Clyvoro's values at scale</li>
+          </ul>
+          <div class="role-section-heading">Requirements</div>
+          <ul class="role-list">
+            <li>4+ years in HR, People Ops, or talent operations at a high-growth startup</li>
+            <li>Experience managing benefits and compliance across multiple US states (international a plus)</li>
+            <li>Proficiency with HRIS tools (Rippling, Gusto, Workday, or similar) and ATS platforms (Lever, Greenhouse)</li>
+            <li>Strong interpersonal skills — you're the person employees trust with hard conversations</li>
+            <li>Operationally excellent: you run tight processes and never let details fall through the cracks</li>
+          </ul>
+          <div class="role-divider"></div>
+          <div class="apply-heading">Apply for this role</div>
+          <p class="apply-subheading">Fill out the form below and we'll get back to you within 5 business days.</p>
+          <form class="apply-form" onsubmit="submitApplication(event, this, 'People Operations Manager', 'Operations', 'Remote (US)')">
+            <div class="form-grid">
+              <div class="form-field"><label class="form-label">Full name <span class="required">*</span></label><input type="text" class="form-input" name="name" placeholder="Jane Smith" required /><span class="form-error-msg">Please enter your full name.</span></div>
+              <div class="form-field"><label class="form-label">Email address <span class="required">*</span></label><input type="email" class="form-input" name="email" placeholder="jane@example.com" required /><span class="form-error-msg">Please enter a valid email.</span></div>
+              <div class="form-field"><label class="form-label">Phone number</label><input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000" /></div>
+              <div class="form-field"><label class="form-label">LinkedIn URL</label><input type="url" class="form-input" name="linkedin" placeholder="https://linkedin.com/in/yourname" /></div>
+              <div class="form-field"><label class="form-label">Portfolio / website</label><input type="url" class="form-input" name="portfolio" placeholder="https://yoursite.com" /></div>
+              <div class="form-field form-full"><label class="form-label">Cover note <span class="required">*</span></label><textarea class="form-textarea" name="message" placeholder="Tell us about a people program you built that you're proud of..." required></textarea><span class="form-error-msg">Please add a short cover note.</span></div>
+              <div class="form-field form-full"><label class="form-label">Resume</label><div class="resume-note"><strong>Resume upload coming soon.</strong> Please paste a link to your resume or LinkedIn above, or email directly to <a href="mailto:admin@clyvoroai.com" style="color:var(--cyan)">admin@clyvoroai.com</a>.</div></div>
+            </div>
+            <div class="form-submit-row"><button type="submit" class="btn btn-primary btn-lg">Submit application →</button><p class="form-privacy">Your information is kept private and only shared with the Clyvoro hiring team.</p></div>
+            <div class="form-success"><div class="form-success-icon">✅</div><h4>Application received!</h4><p>Thanks for applying. We'll be in touch within 5 business days.</p></div>
+            <div class="form-send-error">Something went wrong. Please email <a href="mailto:admin@clyvoroai.com" style="color:var(--red)">admin@clyvoroai.com</a> directly.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /roles-list -->
+
+  <div class="no-roles" id="no-roles">No open roles in this department right now — <a href="mailto:admin@clyvoroai.com" style="color:var(--cyan)">send us your resume anyway</a>.</div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="cta-inner fade-up">
+    <span class="section-label">Don't see your role?</span>
+    <h2>We hire great people, always.</h2>
+    <p>If you're exceptional at what you do and believe in what we're building, we want to hear from you — even if there's no perfect opening today.</p>
+    <div class="cta-buttons">
+      <a href="mailto:admin@clyvoroai.com" class="btn btn-primary btn-lg">Send us your resume</a>
+      <a href="index.html#contact" class="btn btn-outline btn-lg">Talk to our team</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">CLY<span>VORO</span></a>
+      <p>Clyvoro is the AI platform for enterprise teams who need real answers in real time — not more dashboards to stare at.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="index.html#features">Platform</a></li>
+        <li><a href="#">Integrations</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Changelog</a></li>
+        <li><a href="#">Status</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Developers</h4>
+      <ul>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">API Reference</a></li>
+        <li><a href="#">Python SDK</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Clyvoro, Inc. · clyvoroai.com · All rights reserved. · <a href="#" style="color:var(--text-dim)">Privacy</a> · <a href="#" style="color:var(--text-dim)">Terms</a></p>
+    <div class="footer-socials">
+      <a href="#" class="social-link">𝕏</a>
+      <a href="#" class="social-link">in</a>
+      <a href="#" class="social-link">gh</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════════
+     EMAIL SETUP — READ BEFORE DEPLOYING
+     ════════════════════════════════════════════
+     RECOMMENDED SERVICE: EmailJS (emailjs.com)
+     WHY: Works 100% client-side. No backend or Vercel
+     serverless functions needed. Free tier = 200 emails/month.
+     The public key is DESIGNED to be in client-side code —
+     you protect against abuse via EmailJS's domain allowlist.
+
+     SETUP STEPS:
+     1. Go to https://emailjs.com and create a free account
+     2. Add an Email Service (Gmail recommended):
+        Dashboard → Email Services → Add New Service
+        → Connect your Gmail or SMTP account
+        → Note the Service ID (e.g. "service_abc123")
+     3. Create an Email Template:
+        Dashboard → Email Templates → Create New Template
+        Set "To Email" to: admin@clyvoroai.com
+        Paste this template body:
+
+        New Application: {{role_title}}
+
+        Name:       {{applicant_name}}
+        Email:      {{applicant_email}}
+        Phone:      {{applicant_phone}}
+        Department: {{department}}
+        Location:   {{location}}
+        LinkedIn:   {{linkedin_url}}
+        Portfolio:  {{portfolio_url}}
+
+        Cover Note:
+        {{cover_note}}
+
+        — Sent from Clyvoro Careers Page
+
+        → Note the Template ID (e.g. "template_xyz789")
+     4. Get your Public Key:
+        Dashboard → Account → General → Public Key
+
+     5. Replace the three placeholder values below:
+        EMAILJS_SERVICE_ID  = "service_XXXXXXX"
+        EMAILJS_TEMPLATE_ID = "template_XXXXXXX"
+        EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY"
+
+     6. In EmailJS Dashboard → Email Services → your service
+        → Security → add "clyvoroai.com" to allowed domains
+        (prevents others from using your key)
+
+     NOTE ON VERCEL ENV VARS:
+     Because this is a static HTML file, Vercel environment
+     variables are NOT injected at runtime — they only work
+     with frameworks that have a build step (Next.js, Vite, etc.).
+     For a plain HTML file, simply hardcode these values directly
+     below. EmailJS public keys are safe to be in client-side
+     code by design. If you later add a build tool, you can
+     replace them with import.meta.env.VITE_EMAILJS_* references.
+
+     RESUME UPLOAD (future):
+     To enable resume uploads, you need:
+     1. A Vercel serverless function at /api/apply.js
+     2. Upload the file to Cloudinary (free tier) or AWS S3
+     3. Send the download URL via Resend (resend.com) —
+        add RESEND_API_KEY to Vercel project env vars.
+        Resend is the recommended email service for Vercel
+        serverless functions (official Vercel integration).
+     ════════════════════════════════════════════ -->
+
+<script>
+  // ── EMAILJS CONFIG — replace with your real values ──
+  const EMAILJS_SERVICE_ID  = "service_XXXXXXX";   // from EmailJS dashboard
+  const EMAILJS_TEMPLATE_ID = "template_XXXXXXX";  // from EmailJS dashboard
+  const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";    // from EmailJS dashboard → Account
+
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  // ── SCROLL ANIMATIONS ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── ACCORDION TOGGLE ──
+  function toggleRole(header) {
+    const item = header.closest('.role-item');
+    const isOpen = item.classList.contains('open');
+
+    // Close all others
+    document.querySelectorAll('.role-item.open').forEach(el => {
+      if (el !== item) el.classList.remove('open');
+    });
+
+    // Toggle this one
+    item.classList.toggle('open', !isOpen);
+
+    // Scroll into view smoothly if opening
+    if (!isOpen) {
+      setTimeout(() => {
+        item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 80);
+    }
+  }
+
+  // ── DEPARTMENT FILTER ──
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const roleItems  = document.querySelectorAll('.role-item');
+  const noRoles    = document.getElementById('no-roles');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+      let visible = 0;
+
+      roleItems.forEach(item => {
+        const show = filter === 'all' || item.dataset.dept === filter;
+        item.classList.toggle('hidden', !show);
+        if (show) visible++;
+        // Close hidden items
+        if (!show) item.classList.remove('open');
+      });
+
+      noRoles.style.display = visible === 0 ? 'block' : 'none';
+    });
+  });
+
+  // ── FORM SUBMISSION ──
+  function submitApplication(event, form, roleTitle, department, location) {
+    event.preventDefault();
+
+    const nameInput    = form.querySelector('[name="name"]');
+    const emailInput   = form.querySelector('[name="email"]');
+    const messageInput = form.querySelector('[name="message"]');
+    const portfolioInput = form.querySelector('[name="portfolio"]');
+
+    // Clear previous errors
+    form.querySelectorAll('.form-input, .form-textarea').forEach(el => el.classList.remove('error'));
+    form.querySelectorAll('.form-error-msg').forEach(el => el.classList.remove('visible'));
+
+    // Validate required fields
+    let valid = true;
+
+    if (!nameInput.value.trim()) {
+      nameInput.classList.add('error');
+      nameInput.nextElementSibling.classList.add('visible');
+      valid = false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailInput.value.trim() || !emailRegex.test(emailInput.value)) {
+      emailInput.classList.add('error');
+      emailInput.nextElementSibling.classList.add('visible');
+      valid = false;
+    }
+
+    if (!messageInput.value.trim()) {
+      messageInput.classList.add('error');
+      messageInput.nextElementSibling.classList.add('visible');
+      valid = false;
+    }
+
+    // Portfolio required only for designer role
+    if (portfolioInput && portfolioInput.hasAttribute('required') && !portfolioInput.value.trim()) {
+      portfolioInput.classList.add('error');
+      portfolioInput.nextElementSibling.classList.add('visible');
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    // Disable button + show loading state
+    const submitBtn = form.querySelector('[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    const successEl = form.querySelector('.form-success');
+    const errorEl   = form.querySelector('.form-send-error');
+    successEl.classList.remove('visible');
+    errorEl.classList.remove('visible');
+
+    // Build template params
+    const templateParams = {
+      role_title:      roleTitle,
+      department:      department,
+      location:        location,
+      applicant_name:  nameInput.value.trim(),
+      applicant_email: emailInput.value.trim(),
+      applicant_phone: form.querySelector('[name="phone"]').value.trim() || 'Not provided',
+      linkedin_url:    form.querySelector('[name="linkedin"]').value.trim() || 'Not provided',
+      portfolio_url:   portfolioInput ? (portfolioInput.value.trim() || 'Not provided') : 'Not provided',
+      cover_note:      messageInput.value.trim(),
+    };
+
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+      .then(() => {
+        successEl.classList.add('visible');
+        form.querySelectorAll('.form-input, .form-textarea').forEach(el => { el.value = ''; el.classList.remove('error'); });
+        submitBtn.textContent = '✓ Sent';
+      })
+      .catch(err => {
+        console.error('EmailJS error:', err);
+        errorEl.classList.add('visible');
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      });
+  }
+</script>
+
+</body>
+</html>
